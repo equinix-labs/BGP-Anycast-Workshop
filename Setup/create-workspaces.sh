@@ -40,20 +40,6 @@ do
   sudo chmod g+w .
   sudo chmod g+r mykey*
   sudo -u $USER terraform init
-  pwd
-#  sudo sudo -u $USER  -d -m -S $USER terraform init; terraform apply -auto-approve 
+  screen -dmS $USER-terraform-apply terraform apply -auto-approve | tee terraform-apply.out ;
   popd
 done
-
-#
-#
-#terraform init
-#
-#terraform apply -auto-approve
-#
-## check return code
-#
-#terraform output > lab-details.txt
-
-
-
