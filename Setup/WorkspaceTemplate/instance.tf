@@ -3,16 +3,18 @@ resource "packet_ssh_key" "ssh-key" {
   public_key = "${file("mykey.pub")}"
 }
 
-resource "packet_reserved_ip_block" "elastic_ip" {
-  project_id = "${var.packet_project_id}"
-  type       = "public_ipv4"
-  quantity   = 1
-}
+# testing with IPv6
+#resource "packet_reserved_ip_block" "elastic_ip" {
+#  project_id = "${var.packet_project_id}"
+#  type       = "public_ipv4"
+#  quantity   = 1
+#}
 
 resource "packet_device" "hosts" {
   depends_on = ["packet_ssh_key.ssh-key"]
 
-  hostname = "${format("%s-%02d", var.sites[count.index], 1)}"
+  hostname = "${format("%s-%02d", var.sites[count.index], count.index)}"
+
   plan             = "t1.small.x86"
   facilities       = [ "${var.sites[count.index]}" ]
   operating_system = "ubuntu_18_04"
