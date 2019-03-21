@@ -2,8 +2,8 @@
 #
 # account running this script should have sudo group 
 # 
-if [ "$#" -ne 2 ] ; then
-  echo "Usage: $0 BGP-Password Number-Workspaces-To-Create" >&2
+if [ "$#" -ne 4 ] ; then
+  echo "Usage: $0 BGP-Password Packet-Auth-Token Packet-Project-ID Number-Workspaces-To-Create" >&2
   exit 1
 fi
 
@@ -11,7 +11,9 @@ fi
 LAB_NAME="bgp"
 
 BGP_PASSWORD="$1"
-NUMBER_WORKSPACES="$2"
+PACKET_AUTH_TOKEN="$2"
+PACKET_PROJECT_ID="$3"
+NUMBER_WORKSPACES="$4"
 
 echo $NUMBER_WORKSPACES
 
@@ -27,10 +29,10 @@ do
   sudo chmod 2775 /home/$USER
 
 
-  echo ""                                                         >  WorkspaceTemplate/terraform.tfvars
-  echo bgp_md5 = \"$BGP_PASSWORD\"                                >> WorkspaceTemplate/terraform.tfvars
-  echo packet_auth_token=\"g7N27MV3SMtbgzGUKySNm1t97qiGe65y\"     >> WorkspaceTemplate/terraform.tfvars
-  echo packet_project_id=\"515dfd14-9647-475e-903f-d5cc8151f215\" >> WorkspaceTemplate/terraform.tfvars
+  echo ""                                       >  WorkspaceTemplate/terraform.tfvars
+  echo bgp_md5 = \"$BGP_PASSWORD\"              >> WorkspaceTemplate/terraform.tfvars
+  echo packet_auth_token=\"$PACKET_AUTH_TOKEN\" >> WorkspaceTemplate/terraform.tfvars
+  echo packet_project_id=\"$PACKET_PROJECT_ID\" >> WorkspaceTemplate/terraform.tfvars
 
 
   # copy over the student files from the base template
@@ -40,6 +42,6 @@ do
   sudo chmod g+w .
   sudo chmod g+r mykey*
   sudo -u $USER terraform init
-  screen -dmS $USER-terraform-apply terraform apply -auto-approve | tee terraform-apply.out ;
+  screen -dmS $USER-terraform-apply terraform apply -auto-approve | tee /home/$USER/terraform-apply.out ;
   popd
 done
