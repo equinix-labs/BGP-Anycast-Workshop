@@ -5,7 +5,7 @@ resource "packet_ssh_key" "ssh-key" {
 
 resource "packet_reserved_ip_block" "elastic_ip" {
   project_id = "${var.packet_project_id}"
-  type       = "local_ipv4"
+  type       = "public_ipv4"
   quantity   = 1
 }
 
