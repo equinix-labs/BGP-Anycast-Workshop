@@ -20,6 +20,8 @@ resource "packet_device" "hosts" {
   project_id       = "${var.packet_project_id}"
   count            = "${length(var.sites)}"
 
+  tags             = ["var.lab_number}"]
+
   connection {
     user        = "root"
     private_key = "${file("mykey")}"
