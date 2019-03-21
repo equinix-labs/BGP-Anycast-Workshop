@@ -9,6 +9,6 @@ variable "bgp_md5" {}
 # there will be one server provisioned at each location in this list
 # if you want more than one server at a data center, just list it multiple times in the list
 variable "sites" {
-    default = [ "ewr1", "ewr1", "nrt1" ]
+    default = [ "ewr1", "nrt1" ]
 }
 
