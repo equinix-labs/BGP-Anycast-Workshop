@@ -6,11 +6,12 @@ variable "bgp_md5" {}
 
 variable "lab_number" {}
 
-# sites that currently support global_ip4 - AMS1, EWR1, NRT1, and SJC1 
+variable "facility" {
+    default = "ewr1"
+}
 
-# there will be one server provisioned at each location in this list
-# if you want more than one server at a data center, just list it multiple times in the list
-variable "sites" {
-    default = [ "ewr1", "ewr1" ]
+# number of hosts to deploy
+variable "instance_count" {
+    default = "2"
 }
 

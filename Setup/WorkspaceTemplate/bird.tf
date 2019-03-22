@@ -1,7 +1,5 @@
 
-resource "null_resource" "apache" {
-
-    depends_on = ["null_resource.bird"]
+resource "null_resource" "bird" {
 
     count = "${var.instance_count}"
 
@@ -14,9 +12,9 @@ resource "null_resource" "apache" {
 
     provisioner "remote-exec" {
         inline = [
-            "apt-get -y update > apt-get-update-out.txt",
-            "apt-get -y install apache2 > apt-get-apache2-out.txt",
-            "echo `hostname` > /var/www/html/index.html",
+            "apt-get -y install bird > apt-get-bird-out.txt",
+            "sysctl net.ipv4.ip_forward=1",
+            "sysctl net.ipv6.conf.all.forwarding=1",
         ]
     }
 }

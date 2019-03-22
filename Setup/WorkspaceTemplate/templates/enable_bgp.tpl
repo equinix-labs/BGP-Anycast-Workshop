@@ -1,17 +1,25 @@
 #!/bin/bash
+#
+# this file writes the bird configuration file for IPv6 and
+# setups up the (shared) anycast address on the host
 
-json=$(curl https://metadata.packet.net/metadata)
-private_address=$(echo $json | jq -r ".network.addresses[] | select(.public == false) | .address")
-gateway=$(echo $json | jq -r ".network.addresses[] | select(.public == false) | .gateway")
+# these values are filled in by Terraform as a template
+ANYCAST_IP=${anycast_ip}
+ANYCAST_NETWORK=${anycast_network}
+BGP_PASSWORD=${bgp_password}
 
-apt-get install -y bird
-mv /etc/bird/bird.conf  /etc/bird/bird.conf.orig
+# these values are pulled from the local networking configuration
+PRIVATE_ADDRESS=$(hostname -I | awk '{print $2}')
+GATEWAY=$(ip -6 route | awk '/default/ { print $3 }')
 
-cat << EOF >> /etc/bird/bird.conf
+
+mv /etc/bird/bird6.conf  /etc/bird/bird6.conf.orig
+
+cat << EOF >> /etc/bird/bird6.conf
 filter packet_bgp {
-    if net = ${cidr_notation} then accept;
+    if net = $ANYCAST_NETWORK then accept;
 }
-router id $private_address;
+router id $PRIVATE_ADDRESS;
 protocol direct {
     interface "lo";
 }
@@ -27,8 +35,8 @@ protocol device {
 protocol bgp {
     export filter packet_bgp;
     local as 65000;
-    neighbor $gateway as 65530;
-    password "${bgp_password}";
+    neighbor $GATEWAY as 65530;
+    password "$BGP_PASSWORD";
 }
 EOF
 
@@ -36,12 +44,10 @@ EOF
 cat << EOF >> /etc/network/interfaces
 
 auto lo:0
-iface lo:0 inet static
-   address ${floating_ip}
-   netmask ${floating_netmask}
+iface lo:0 inet6 static
+   address ${anycast_ip}
+   netmask 64
 EOF
 
-sysctl net.ipv4.ip_forward=1
 ifup lo:0
-service bird restart
-
+service bird6 restart

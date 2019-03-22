@@ -1,7 +1,15 @@
-output "Server IPs" {
+output "Server IPs v4" {
   value = "${packet_device.hosts.*.access_public_ipv4}"
 }
 
-output "Elastic IP" {
-  value = "${packet_reserved_ip_block.elastic_ip.cidr_notation}"
+output "Server IPs v6" {
+  value = "${packet_device.hosts.*.access_public_ipv6}"
+}
+
+output "Anycast IPv6 Address" {
+  value = "${local.anycast_addr}"
+}
+
+output "Anycast IPv6 Network" {
+  value = "${local.anycast_network}"
 }

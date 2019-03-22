@@ -13,16 +13,16 @@ resource "packet_ssh_key" "ssh-key" {
 resource "packet_device" "hosts" {
   depends_on = ["packet_ssh_key.ssh-key"]
 
-  hostname = "${format("%s-%02d", var.sites[count.index], count.index)}"
+  hostname = "${format("%s-%02d", var.facility, count.index)}"
 
   plan             = "t1.small.x86"
-  facilities       = [ "${var.sites[count.index]}" ]
+  facilities       = [ "${var.facility}" ]
   operating_system = "ubuntu_18_04"
   billing_cycle    = "hourly"
   project_id       = "${var.packet_project_id}"
-  count            = "${length(var.sites)}"
+  count            = "${(var.instance_count)}"
 
-  tags             = ["var.lab_number}"]
+  tags             = [ "${var.lab_number}" ]
 
   connection {
     user        = "root"

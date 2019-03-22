@@ -1,19 +1,20 @@
 
+
+
 data "template_file" "enable_bgp" {
     template = "${file("templates/enable_bgp.tpl")}"
     vars = {
-      cidr_notation      = "${packet_reserved_ip_block.elastic_ip.cidr_notation}"
-      floating_ip       = "${packet_reserved_ip_block.elastic_ip.address}"
-#      floating_cidr     = "${packet_reserved_ip_block.elastic_ip.cidr}"
-      floating_netmask  = "${packet_reserved_ip_block.elastic_ip.netmask}"
-#      private_ipv4      = "${element(packet_device.hosts.*.access_private_ipv4,count.index)}"
-      bgp_password      = "${var.bgp_md5}"
+      anycast_ip       = "${local.anycast_addr}"
+      anycast_network  = "${local.anycast_network}"
+      bgp_password     = "${var.bgp_md5}"
     }
 }
 
 resource "null_resource" "configure_bird" {
 
-    count = "${length(var.sites)}"
+    depends_on = ["null_resource.bird"]
+
+    count = "${var.instance_count}"
 
     triggers = {
         template = "${data.template_file.enable_bgp.rendered}"
