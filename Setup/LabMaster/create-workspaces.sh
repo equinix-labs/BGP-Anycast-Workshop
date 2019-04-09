@@ -53,7 +53,7 @@ do
   pushd /home/$USER/WorkspaceTemplate
   sudo -u $USER ssh-keygen -t ed25519 -f /home/$USER/WorkspaceTemplate/mykey  -q -N ""
   sudo chmod g+w .
-  sudo chmod g+r mykey*
+  sudo chmod 400 mykey*
   sudo -u $USER terraform init
   screen -dmS $USER-terraform-apply terraform apply -auto-approve | tee /home/$USER/terraform-apply.out ;
   popd
