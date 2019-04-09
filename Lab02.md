@@ -7,6 +7,30 @@
 
 ## Verify Individual Web Servers
 
+Each host running a web server that returns back it's hostname. Let's verify that each host web server is running correctly and that the correct hostname is being returned.
+
+### Get the list of hosts again
+```
+terraform output
+```
+### Verify IPv4 
+```
+curl http://<web_host_1_ipv4> 
+curl http://<web_host_2_ipv4>
+```
+
+Let's do the same check with IPv6. Make sure to use the square brackets.
+
+```
+curl http://[<web_host_1_ipv6>]
+curl http://[<web_host_2_ipv6>]
+```
+
+## Verify Anycast Capabilities
+
+ssh root@<web_ip_number> -i default.pem
+```
+
 ```
 terraform output
 curl http://web01_ip/
