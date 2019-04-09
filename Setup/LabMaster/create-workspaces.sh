@@ -45,7 +45,8 @@ do
   echo bgp_md5 = \"$BGP_PASSWORD\"              >> WorkspaceTemplate/terraform.tfvars
   echo packet_auth_token=\"$PACKET_AUTH_TOKEN\" >> WorkspaceTemplate/terraform.tfvars
   echo packet_project_id=\"$PACKET_PROJECT_ID\" >> WorkspaceTemplate/terraform.tfvars
-  echo lab_number=\"$USER\"                     >> WorkspaceTemplate/terraform.tfvars
+  echo lab_number=\"$i\"                        >> WorkspaceTemplate/terraform.tfvars
+  echo lab_name=\"$USER\"                       >> WorkspaceTemplate/terraform.tfvars
 
 
   # copy over the student files from the base template
