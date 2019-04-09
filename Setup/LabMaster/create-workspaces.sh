@@ -20,8 +20,14 @@ echo PACKET_AUTH_TOKEN=$PACKET_AUTH_TOKEN
 echo PACKET_PROJECT_ID=$PACKET_PROJECT_ID
 echo NUMBER_WORKSPACES=$NUMBER_WORKSPACES
 
+rm -rf BGP-Anycast-Workshop/
 git clone https://github.com/packet-labs/BGP-Anycast-Workshop
 cd BGP-Anycast-Workshop/
+
+# Terraform needs access to these to install plugins
+chmod 755 ~root
+touch ~root/.netrc
+chmod 777 ~root/.netrc
 
 for i in `seq -w 01 $NUMBER_WORKSPACES`
 do
