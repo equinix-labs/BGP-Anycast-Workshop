@@ -6,6 +6,8 @@ variable "bgp_md5" {}
 
 variable "lab_number" {}
 
+variable "lab_name" {}
+
 variable "facility" {
     default = "ewr1"
 }
