@@ -44,7 +44,7 @@ In brief, Terraform will be:
   * apache[2] - configuring apache on host [2]
   * bird[2] - installing BIRD on host [2]
   * configure_bird[2] - configuring BIRD on host [2]
-  + enable_bgp_device_session[2] - notifying the upstream router that host [2] is an active BGP neighbor
+  * enable_bgp_device_session[2] - notifying the upstream router that host [2] is an active BGP neighbor
 
 ## Execute the Terraform Plan
 
