@@ -7,5 +7,5 @@ data "packet_precreated_ip_block" "ipv6" {
 
 locals {
   anycast_network   = "${cidrsubnet(data.packet_precreated_ip_block.ipv6.cidr_notation,8,2)}"
-  anycast_addr      = "${cidrhost(local.anycast_network,1)}"
+  anycast_addr      = "${cidrhost(local.anycast_network,${var.lab_number})}"
 }
