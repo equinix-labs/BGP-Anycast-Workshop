@@ -1,11 +1,24 @@
-# Lab 09 - TBD
+# Lab 09 - Lab Cleanup
 
 ## Prerequisites
 
 * Access to the lab master server from Lab 01
 
-## TBD
+## Lab Teardown
 
-## Next Steps
+Congrats! You made it through the lab exercises!
 
-Once you've , proceed to Lab 5
+Please take a moment to tear down (turn off) all the deployed hosts so they can be made available to others.
+
+```
+terraform destroy
+```
+
+Please mark your master lab account on the etherpad as complete so it can be deallocated.
+
+## Feedback
+
+Do you have questions or feedback about the lab? Please leave them as an "Issue" on GitHub:
+
+[Workshop GitHub](https://github.com/packet-labs/BGP-Anycast-Workshop)
+

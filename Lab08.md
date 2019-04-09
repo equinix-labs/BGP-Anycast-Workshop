@@ -28,4 +28,4 @@ terraform apply
 
 ## Next Steps
 
-Once you've deallocated the new server, proceed to Lab 9
+Once you've deallocated the new server, proceed to [Lab 9](Lab09.md)

@@ -26,4 +26,4 @@ cat
 
 ## Next Steps
 
-Once you've examined the Terraform Config files, proceed to Lab 5
+Once you've examined the Terraform Config files, proceed to [Lab 5](Lab05.md)

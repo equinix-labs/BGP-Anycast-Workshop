@@ -29,4 +29,4 @@ terraform apply
 
 ## Next Steps
 
-Once you've released the hardware, proceed to Lab 7.
+Once you've released the hardware, proceed to [Lab 7](Lab07.md)

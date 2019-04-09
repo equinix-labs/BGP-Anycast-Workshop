@@ -37,4 +37,4 @@ Repeat the ```curl``` command until you see the new "bonus" web server show up.
 
 ## Next Steps
 
-Once you've validate that the bonus server is functioning and part of the anycast, proceed to Lab 6
+Once you've validate that the bonus server is functioning and part of the anycast, proceed to [Lab 6](Lab06.md)

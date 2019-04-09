@@ -50,4 +50,4 @@ Repeat curl until the new web server name appears.
 
 ## Next Steps
 
-Once you've brought the new Web Server online, proceed to Lab 8
+Once you've brought the new Web Server online, proceed to [Lab 8](Lab08.md)
