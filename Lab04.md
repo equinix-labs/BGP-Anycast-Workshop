@@ -10,7 +10,6 @@
 
 ## Lab Master Access
 
-
 With your assigned lab username (i.e. bgp03), log into the lab master server using the your assigned lab and the password. You'll need to use a SSH client (i.e. PuTTy).
 
 ```
