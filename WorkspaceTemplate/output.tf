@@ -13,3 +13,7 @@ output "Anycast IPv6 Address" {
 output "Anycast IPv6 Network" {
   value = "${local.anycast_network}"
 }
+
+output "Test Command" {
+  value = "curl http://[${local.anycast_addr}]"
+}
