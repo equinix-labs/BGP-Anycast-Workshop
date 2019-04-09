@@ -13,7 +13,7 @@ resource "packet_ssh_key" "ssh-key" {
 resource "packet_device" "hosts" {
   depends_on = ["packet_ssh_key.ssh-key"]
 
-  hostname = "${format("%s-%02d", var.facility, count.index)}"
+  hostname = "${format("%s-%s-%02d", var.lab_number, var.facility, count.index)}"
 
   plan             = "t1.small.x86"
   facilities       = [ "${var.facility}" ]
