@@ -14,10 +14,10 @@ If you ever need a new lab environment, return to this page and simply assign yo
 
 ## Lab Master Access
 
-With your assigned lab (i.e. bgp03), log into the lab master server using the your assigned lab and the password. You'll need to use a SSH client (i.e. PuTTy). 
+With your assigned lab username (i.e. bgp03), log into the lab master server using the your assigned lab and the password. You'll need to use a SSH client (i.e. PuTTy). 
 
 ```
-ssh <your_lab>@<lab_master>
+ssh <your_lab_username>@<lab_master_server>
 ```
 
 ## Verify Deployed Web Instances
@@ -32,20 +32,19 @@ terraform output
 ```
 
 ```
-bgp03@stl:~/WorkspaceTemplate$ terraform output
-Anycast IPv6 Address = 2604:1380:2:2302::3
-Anycast IPv6 Network = 2604:1380:2:2302::/64
+Anycast IPv6 Address = 2604:1380:2:2303::1
+Anycast IPv6 Network = 2604:1380:2:2303::/64
+IPv6 Anycast Curl Command = curl http://[2604:1380:2:2303::1]
+SSH Access Server 0 = ssh root@147.75.98.155 -i mykey
 Server IPs v4 = [
-    147.75.194.9,
-    147.75.195.57
+    147.75.98.155,
+    147.75.76.169
 ]
 Server IPs v6 = [
     2604:1380:2:2300::7,
     2604:1380:2:2300::d
 ]
-Test Command = curl http://[2604:1380:2:2302::3]
 ```
-
 
 And let's do a quick network connectivity check to each host.
 
