@@ -16,7 +16,7 @@ With your assigned lab username (i.e. bgp03), log into the lab master server usi
 ssh <your_lab_username>@<lab_master_server>
 ```
 
-## Decreate the host count
+## Decrement the host count
 
 The number of hosts is defined in the Terraform variables configuration file ```vars.tf```. Decreate it from the current count to 1.
 
