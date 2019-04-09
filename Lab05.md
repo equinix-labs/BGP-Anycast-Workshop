@@ -25,7 +25,7 @@ cd WorkspaceTemplate/
 vi vars.tf
 ```
 
-The sample below already has the count increated to 3.
+The sample below already has the count increased to 3.
 ```
 # number of hosts to deploy
 variable "instance_count" {
