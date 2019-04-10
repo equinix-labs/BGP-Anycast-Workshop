@@ -1,18 +1,21 @@
+## Overview
 
-This workshop is designed to be sell contained and will deploy all the infrastructure you need to run your own lab. You will need an account on Packet
+These instructions walk through setting up an environment to support multiple students attending this workshop. It is fully self contained and will spin up all the student environments so they can dive right into things without having to install supporting tools and software.
 
+If you're looking to run this workshop just for yourself, feel free to set the number_labs (See below) to 1. This will spin up just a single student environment.
 
+If you're looking to run this at a public event (conference, meetup, etc), drop Packet a note and they might hook you up with credits to run the lab.
 
 ## Setup the environment
 
+Clone this repo someplace where Terraform is available. To install Terraform, please see [Terraform Download](https://www.terraform.io/downloads.html)
 ```
 git clone https://github.com/packet-labs/BGP-Anycast-Workshop
 ```
 
-## Setup the Labmaster
+## Define the Lab Settings
 
-The Lab Master is used by students to run Terraform and as a jump host to the deployed hosts. 
-
+The default values are appropriate for most installations. 
 ```
 cd BGP-Anycast-Workshop/
 cd Labmaster/
@@ -31,6 +34,8 @@ echo packet_project_id=\"12345678-90AB-CDEF-GHIJ-KLMNOPQRSTUV\" >> terraform.tfv
 By default, 3 labs will be spun up (with 2 hosts per lab). This can be changed with the variable number_labs. 
 
 ## Deploy the Lab Master
+
+The Lab Master is used by students to run Terraform and as a jump host to the deployed hosts. It will be setup with the required tools (Git and Terraform) for the students to use.
 
 Execute this Terraform to build the lab master. It will create the user accounts on the lab master (bgp01, bpg02, bpg03,...) and run Terraform within each user accounts.
 
