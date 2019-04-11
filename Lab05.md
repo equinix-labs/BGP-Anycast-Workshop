@@ -59,7 +59,7 @@ It'll take a approximately 3 minutes for the bare metal host to come online and 
 
 ## Validate the new Host and Anycast
 
-Terraform will now report back three hosts and the new host will be broadcasting BGP to the upstread router. Let's verify it is all functioning correctly.
+Terraform will now report back three hosts and the new host will be broadcasting BGP to the upstream router. Let's verify it is all functioning correctly.
 
 ```
 terraform output
