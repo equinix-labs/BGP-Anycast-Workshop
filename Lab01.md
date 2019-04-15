@@ -12,6 +12,30 @@ Take note of the name of the "lab master" server on the whiteboard/projector. Th
 
 If you ever need a new lab environment, return to this page and simply assign yourself a new one. Mark any old/broken lab environments as "broken/recycle" and it will be rebuilt.
 
+## Deployment Layout
+
+This lab consists of a "Lab Master" which is shared by all the students using the "bgpXX" login (replacing XX with lab assignment number, i.e. bgp05). Within that account directory is a deployed Terraform consisting of two physical servers (web servers). These hosts are dedicated to the students lab.
+
+                                     +--------------------+
+                                     |                    |
+                                     |                    |
++----------------------+   SSH       |                 +--v-------------------+
+|                      +-------------+         BGP     |                      |
+| Lab Master           |                     +---------> bgp05-ewr01-00       |
+| Terraform            |                     |         | web server           |
+| shared by students   |        +--------+   |         | login: root          |
+| login: bgpXX         +---v    |        <---+         | student dedicated    |
++----------------------+   |    | Router |             +----------------------+
+                           |    |        <---+
+                           |    +--------+   | BGP     +----------------------+
+                           |                 +--------->                      |
+                           |                           | bgp05-ewr1-01        |
+                           |                           | web server           |
+                           +-------------------------->+ login: root          |
+                                    SSH                | student dedicated    |
+                                                       +----------------------+
+
+
 ## Lab Master Access
 
 With your assigned lab username (i.e. bgp03), log into the lab master server using the your assigned lab and the password. You'll need to use a SSH client (i.e. PuTTy). 
