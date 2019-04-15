@@ -4,7 +4,7 @@
 # setups up the (shared) anycast address on the host
 
 # these values are filled in by Terraform as a template
-ANYCAST_IP=${anycast_ip}
+ANYCAST_IP=${anycast_ip_1}
 ANYCAST_NETWORK=${anycast_network}
 BGP_PASSWORD=${bgp_password}
 
@@ -45,7 +45,7 @@ cat << EOF >> /etc/network/interfaces
 
 auto lo:0
 iface lo:0 inet6 static
-   address ${anycast_ip}
+   address ${anycast_ip_1}
    netmask 64
 EOF
 
