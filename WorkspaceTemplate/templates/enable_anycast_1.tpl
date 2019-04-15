@@ -3,7 +3,7 @@ cat << EOF >> /etc/network/interfaces
 
 auto lo:0
 iface lo:0 inet6 static
-   address ${anycast_ip}
+   address ${anycast_ip_1}
    netmask 64
 EOF
 
