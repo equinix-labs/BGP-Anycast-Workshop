@@ -7,7 +7,7 @@ output "Server IPs v6" {
 }
 
 output "Anycast IPv6 Address" {
-  value = "${local.anycast_addr}"
+  value = "${local.anycast_addr_1}"
 }
 
 output "Anycast IPv6 Network" {

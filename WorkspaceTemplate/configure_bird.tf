@@ -4,7 +4,7 @@
 data "template_file" "enable_bgp" {
     template = "${file("templates/enable_bgp.tpl")}"
     vars = {
-      anycast_ip       = "${local.anycast_addr}"
+      anycast_ip       = "${local.anycast_addr_1}"
       anycast_network  = "${local.anycast_network}"
       bgp_password     = "${var.bgp_md5}"
     }
