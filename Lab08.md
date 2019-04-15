@@ -16,13 +16,27 @@ With your assigned lab username (i.e. bgp03), log into the lab master server usi
 ssh <your_lab_username>@<lab_master_server>
 ```
 
+## Create the new Anycast address
+
+Edit ```ipv6.tf``` and create a new variable called ```anycast_addr_2``` that uses the ::2 address in the IPv6 subnet.
+
+```
+  anycast_addr_1      = "${cidrhost(local.anycast_network,1)}"
+  anycast_addr_2      = "${cidrhost(local.anycast_network,2)}"
+```
+
+
 ## Configure the new Anycast on the hosts
 
-We'll need a new template that will apply the new address to the host. This new file would be "templates/enable_anycast_2.tpl" and contain the following:
-```
-# append to the interfaces file
-cat << EOF >> /etc/network/interfaces
+We'll need a new template that will apply the new address to the host. This new file would be "templates/enable_anycast_2.tpl". You can copy "templates/enable_anycast_1.tpl" as a base and edit.
 
+```
+cp templates/enable_anycast_1.tpl templates/enable_anycast_2.tpl
+vi templates/enable_anycast_2.tpl
+```
+
+It should look like:
+```
 auto lo:1
 iface lo:1 inet6 static
    address ${anycast_ip_2}
@@ -35,8 +49,14 @@ service bird6 restart
 
 ## Define the template variables
 
-We'll need a new Terraform file that will define the template variables and execute the template on the host. This new file would be "anycast_2.tf"
+We'll need new Terraform files that will define the variables and execute the template on the host. Simple use the existing files for the first anycast address and modify the variables within to use the ::2 address.
 
+```
+cp enable_anycast_1.tf enable_anycast_2.tf
+vi enable_anycast_2.tf
+```
+
+It should look like:
 ```
 data "template_file" "enable_anycast_2" {
     template = "${file("templates/enable_anycast_2.tpl")}"
