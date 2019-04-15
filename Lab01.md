@@ -16,6 +16,7 @@ If you ever need a new lab environment, return to this page and simply assign yo
 
 This lab consists of a "Lab Master" which is shared by all the students using the "bgpXX" login (replacing XX with lab assignment number, i.e. bgp05). Within that account directory is a deployed Terraform consisting of two physical servers (web servers). These hosts are dedicated to the students lab.
 
+```
                                      +--------------------+
                                      |                    |
                                      |                    |
@@ -34,7 +35,7 @@ This lab consists of a "Lab Master" which is shared by all the students using th
                            +-------------------------->+ login: root          |
                                     SSH                | student dedicated    |
                                                        +----------------------+
-
+```
 
 ## Lab Master Access
 
