@@ -15,7 +15,7 @@ output "Anycast IPv6 Network" {
 }
 
 output "IPv6 Anycast Curl Command" {
-  value = "curl http://[${local.anycast_addr}]"
+  value = "curl http://[${local.anycast_addr_1}]"
 }
 
 output "SSH Access Server 0" {
