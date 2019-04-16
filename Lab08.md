@@ -1,4 +1,4 @@
-# Lab 07 - Adding an additional Anycast 
+# Lab 08 - Adding an additional Anycast 
 
 ## Goal
 
@@ -117,7 +117,7 @@ curl http://[Anycast IPv6 Address 2]/
 Log into the deployed host and examine the networking.
 ```
 terraform output
-ssh root@<Server IP 4> -i default.pem
+ssh root@<Server IP 4> -i mykey
 ip -6 a show
 ```
 
