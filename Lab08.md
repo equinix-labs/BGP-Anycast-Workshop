@@ -1,4 +1,4 @@
-# Lab 07 - Adding an additional Anycast 
+# Lab 08 - Adding an additional Anycast 
 
 ## Goal
 
