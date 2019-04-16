@@ -52,9 +52,9 @@ do
   # copy over the student files from the base template
   sudo -u $USER cp -r WorkspaceTemplate /home/$USER/
   pushd /home/$USER/WorkspaceTemplate
-  sudo -u $USER ssh-keygen -t ed25519 -f /home/$USER/WorkspaceTemplate/mykey  -q -N ""
+  sudo -u $USER ssh-keygen -t ed25519 -f /home/$USER/.ssh/id_ed25519  -q -N ""
   sudo chmod g+w .
-  sudo chmod 400 mykey*
+  sudo chmod 400 /home/$USER/.ssh/id_ed25519
   sudo touch terraform.tfstate
   sudo chown $USER.sudo terraform.tfstate
   sudo -u $USER terraform init
