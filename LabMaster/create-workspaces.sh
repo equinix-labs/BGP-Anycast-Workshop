@@ -53,6 +53,8 @@ do
   sudo -u $USER cp -r WorkspaceTemplate /home/$USER/
   pushd /home/$USER/WorkspaceTemplate
   sudo -u $USER ssh-keygen -t ed25519 -f /home/$USER/.ssh/id_ed25519  -q -N ""
+  sudo -u $USER cp /home/$USER/.ssh/id_ed25519 /home/$USER/WorkspaceTemplate/mykey
+  sudo -u $USER cp /home/$USER/.ssh/id_ed25519.pub /home/$USER/WorkspaceTemplate/mykey.pub
   sudo chmod g+w .
   sudo chmod 400 /home/$USER/.ssh/id_ed25519
   sudo touch terraform.tfstate
