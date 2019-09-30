@@ -2,7 +2,7 @@
 #
 # account running this script should have sudo group 
 # 
-if [ "$#" -ne 4 ] ; then
+if [ "$#" -ne 5 ] ; then
   echo "Usage: $0 BGP-Password Packet-Auth-Token Packet-Project-ID Number-Workspaces-To-Create" >&2
   exit 1
 fi
@@ -14,11 +14,13 @@ BGP_PASSWORD="$1"
 PACKET_AUTH_TOKEN="$2"
 PACKET_PROJECT_ID="$3"
 NUMBER_WORKSPACES="$4"
+FACILITY="$5"
 
 echo BGP_PASSWORD=$BGP_PASSWORD
 echo PACKET_AUTH_TOKEN=$PACKET_AUTH_TOKEN
 echo PACKET_PROJECT_ID=$PACKET_PROJECT_ID
 echo NUMBER_WORKSPACES=$NUMBER_WORKSPACES
+echo FACILITY=$FACILITY
 
 rm -rf BGP-Anycast-Workshop/
 git clone https://github.com/packet-labs/BGP-Anycast-Workshop
@@ -47,6 +49,7 @@ do
   echo packet_project_id=\"$PACKET_PROJECT_ID\" >> WorkspaceTemplate/terraform.tfvars
   echo lab_number=\"$i\"                        >> WorkspaceTemplate/terraform.tfvars
   echo lab_name=\"$USER\"                       >> WorkspaceTemplate/terraform.tfvars
+  echo facility=\"$FACILITY\"                   >> WorkspaceTemplate/terraform.tfvars
 
 
   # copy over the student files from the base template
