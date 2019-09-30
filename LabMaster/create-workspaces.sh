@@ -3,7 +3,7 @@
 # account running this script should have sudo group 
 # 
 if [ "$#" -ne 5 ] ; then
-  echo "Usage: $0 BGP-Password Packet-Auth-Token Packet-Project-ID Number-Workspaces-To-Create" >&2
+  echo "Usage: $0 BGP-Password Packet-Auth-Token Packet-Project-ID Number-Workspaces-To-Create Facility" >&2
   exit 1
 fi
 
