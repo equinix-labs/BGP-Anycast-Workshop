@@ -65,6 +65,8 @@ do
   sudo -u $USER terraform init
   screen -dmS $USER-terraform-apply terraform apply -auto-approve
   popd
+  # pause to prevent overloading deployments
+  sleep 180
 done
 
 cat <<EOF >> /etc/ssh/sshd_config
