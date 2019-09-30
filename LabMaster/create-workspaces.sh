@@ -66,7 +66,7 @@ do
   screen -dmS $USER-terraform-apply terraform apply -auto-approve
   popd
   # pause to prevent overloading deployments
-  sleep 180
+  sleep 20
 done
 
 cat <<EOF >> /etc/ssh/sshd_config
