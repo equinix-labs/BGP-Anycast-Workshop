@@ -1,7 +1,8 @@
 # any values set here will override the defaults in variables.tf
 
 #packet.facility = "ewr1"
-#hostname = "anycast-lab-master"
+#hostname = "anycast-lab-master-ewr1"
+#number_labs = 2
 #
 #packet_auth_token="ABCDEFGHIJKLMNOPQRSTUVWXYZ123456"
 #packet_project_id="12345678-90AB-CDEF-GHIJ-KLMNOPQRSTUV"
