@@ -49,7 +49,7 @@ do
   echo packet_project_id=\"$PACKET_PROJECT_ID\" >> WorkspaceTemplate/terraform.tfvars
   echo lab_number=\"$i\"                        >> WorkspaceTemplate/terraform.tfvars
   echo lab_name=\"$USER\"                       >> WorkspaceTemplate/terraform.tfvars
-  echo facility=\"$FACILITY\"                   >> WorkspaceTemplate/terraform.tfvars
+  echo packet_facility=\"$FACILITY\"            >> WorkspaceTemplate/terraform.tfvars
 
 
   # copy over the student files from the base template
