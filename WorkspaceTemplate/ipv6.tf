@@ -1,5 +1,5 @@
 data "packet_precreated_ip_block" "ipv6" {
-  facility         = "ewr1"
+  facility         = "${var.facility}"
   project_id       = "${var.packet_project_id}"
   address_family   = 6
   public           = true
