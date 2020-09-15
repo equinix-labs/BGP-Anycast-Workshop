@@ -1,3 +1,7 @@
+![](https://img.shields.io/badge/Stability-Experimental-red.svg)
+
+This repository is [Experimental](https://github.com/packethost/standards/blob/master/experimental-statement.md) meaning that it's based on untested ideas or techniques and not yet established or finalized or involves a radically new and innovative style! This means that support is best effort (at best!) and we strongly encourage you to NOT use this in production.
+
 # BGP-Anycast-Workshop
 
 One of the best ways to run a highly redudant cluster of servers is by using BGP, Border Gateway Protocol, and one of the best tools for deploying a cluster of servers is via Terraform. This workshop shows how Terraform and BGP, along with IPv6, can be used to easily deploy, grow, and shrink a cluster of bare metal hosts.
