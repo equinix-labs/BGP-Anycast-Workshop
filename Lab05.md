@@ -26,25 +26,29 @@ vi vars.tf
 ```
 
 The sample below already has the count increased to 3.
+
 ```
 # number of hosts to deploy
 variable "instance_count" {
     default = "3"
 }
 ```
+
 ## Examine Terraform Plan
 
 Before applying this change to the network, let's examine what Terraform is planning to do. Items marked as [2] refer to our third instance which is to be deployed. Instances [0] and [1] have already been deployed.
+
 ```
 terraform plan | more
 ```
 
 In brief, Terraform will be:
-  * packet_device.hosts[2] - deploying the bare metal host [2]
-  * apache[2] - configuring apache on host [2]
-  * bird[2] - installing BIRD on host [2]
-  * configure_bird[2] - configuring BIRD on host [2]
-  * enable_bgp_device_session[2] - notifying the upstream router that host [2] is an active BGP neighbor
+
+* metal_device.hosts[2] - deploying the bare metal host [2]
+* apache[2] - configuring apache on host [2]
+* bird[2] - installing BIRD on host [2]
+* configure_bird[2] - configuring BIRD on host [2]
+* enable_bgp_device_session[2] - notifying the upstream router that host [2] is an active BGP neighbor
 
 ## Execute the Terraform Plan
 
@@ -53,7 +57,6 @@ Confident that Terraform will be doing the right thing, go ahead and apply the T
 ```
 terraform apply --auto-approve
 ```
-
 
 It'll take a approximately 3 minutes for the bare metal host to come online and then a few more minutes for the software installation.
 
@@ -69,14 +72,15 @@ curl http://<Server IP v4 #3>
 ```
 
 Now test the anycast address and validate that the new server is in the rotation. It might take a minute for BGP to sync and it to appear.
+
 ```
 curl http://[Anycast IPv6 Address]
 ```
 
 Repeat the ```curl``` command until you see the new web server show up.
 
-
 In our sample below, the new server (02) it appeared on the second curl.
+
 ```
 bgp03@stl:~/WorkspaceTemplate$  curl http://[2604:1380:2:2303::1]
 bgp03-ewr1-00

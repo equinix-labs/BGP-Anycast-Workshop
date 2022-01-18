@@ -8,7 +8,7 @@
 
 On the whiteboard/projector, there will be a link to an etherpad listing all the available lab environments along with the default password. Follow the link and write your name alongside a lab number (i.e. bgp03 - John Doe).
 
-Take note of the name of the "lab master" server on the whiteboard/projector. This will be the jump server from where you will access 
+Take note of the name of the "lab master" server on the whiteboard/projector. This will be the jump server from where you will access
 
 If you ever need a new lab environment, return to this page and simply assign yourself a new one. Mark any old/broken lab environments as "broken/recycle" and it will be rebuilt.
 
@@ -39,7 +39,7 @@ This lab consists of a "Lab Master" which is shared by all the students using th
 
 ## Lab Master Access
 
-With your assigned lab username (i.e. bgp03), log into the lab master server using the your assigned lab and the password. You'll need to use a SSH client (i.e. PuTTy). 
+With your assigned lab username (i.e. bgp03), log into the lab master server using the your assigned lab and the password. You'll need to use a SSH client (i.e. PuTTy).
 
 ```
 ssh <your_lab_username>@<lab_master_server>
@@ -49,7 +49,7 @@ ssh <your_lab_username>@<lab_master_server>
 
 We've already taken the liberty of deploying a number of servers into your environment and setting them up with IPv6 and Anycast. This way you can see the end result. Don't worry, you'll get a chance to deploy it all yourself shortly.
 
-Let's verify that all your hosts are deployed OK. You should have two physical hosts deployed, each with IPv4 and IPv6 addresses. 
+Let's verify that all your hosts are deployed OK. You should have two physical hosts deployed, each with IPv4 and IPv6 addresses.
 
 ```
 cd WorkspaceTemplate
@@ -79,6 +79,7 @@ ping -c 5 <Server #2 IP v4>
 ```
 
 You should see something like:
+
 ```
 bgp03@stl:~/WorkspaceTemplate$ ping -c 5 147.75.194.9
 PING 147.75.194.9 (147.75.194.9) 56(84) bytes of data.

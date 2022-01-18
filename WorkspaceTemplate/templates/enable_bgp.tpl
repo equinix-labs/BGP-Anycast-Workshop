@@ -16,7 +16,7 @@ GATEWAY=$(ip -6 route | awk '/default/ { print $3 }')
 mv /etc/bird/bird6.conf  /etc/bird/bird6.conf.orig
 
 cat << EOF >> /etc/bird/bird6.conf
-filter packet_bgp {
+filter metal_bgp {
     if net = $ANYCAST_NETWORK then accept;
 }
 router id $PRIVATE_ADDRESS;
@@ -33,7 +33,7 @@ protocol device {
     scan time 10;
 }
 protocol bgp {
-    export filter packet_bgp;
+    export filter metal_bgp;
     local as 65000;
     neighbor $GATEWAY as 65530;
     password "$BGP_PASSWORD";

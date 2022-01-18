@@ -1,4 +1,4 @@
-# Lab 07 - Adding an additional Anycast 
+# Lab 07 - Adding an additional Anycast
 
 ## Goal
 
@@ -20,15 +20,17 @@ ssh <your_lab_username>@<lab_master_server>
 ## Define the second Anycast address
 
 The first (:1) IPv6 in the subnet is already in use so we'll create a second IPv6 address and use :2
+
 ```
 vi ipv6.tf
 ```
 
 Call the new address "anycast_addr_2" and assign it the second address in the subnet.
+
 ```
 locals {
   # 8 bits is 2^8 or 256 labs
-  anycast_network   = "${cidrsubnet(data.packet_precreated_ip_block.ipv6.cidr_notation,8,var.lab_number)}"
+  anycast_network   = "${cidrsubnet(data.metal_precreated_ip_block.ipv6.cidr_notation,8,var.lab_number)}"
   anycast_addr      = "${cidrhost(local.anycast_network,1)}"
   anycast_addr_2    = "${cidrhost(local.anycast_network,2)}"
 }
@@ -39,12 +41,12 @@ locals {
 The "output.tf" displays the generate values. Update it so that this new address is dislayed.
 
 ```
-output "Anycast IPv6 Address 2" {
-  value = "${local.anycast_addr_2}"
+output "AnycastIPv6Address2" {
+  value = local.anycast_addr_2
 }
 ```
 
-## Execute the Terraform Plan 
+## Execute the Terraform Plan
 
 Executing the Terraform plan will output the new Anycast address.
 
@@ -53,6 +55,7 @@ terraform plan
 ```
 
 You should see the new address outputted similar to:
+
 ```
 Anycast IPv6 Address 2 = 2604:1380:2:2303::2
 ```

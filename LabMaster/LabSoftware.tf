@@ -1,12 +1,12 @@
 
 resource "null_resource" "lab-software" {
 
-  depends_on    = ["packet_device.lab-master"]
+  depends_on = [metal_device.lab-master]
 
   connection {
     user        = "root"
-    private_key = "${tls_private_key.default.private_key_pem}"
-    host        = "${packet_device.lab-master.access_public_ipv4}"
+    private_key = tls_private_key.default.private_key_pem
+    host        = metal_device.lab-master.access_public_ipv4
     agent       = false
     timeout     = "30s"
   }
