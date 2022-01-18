@@ -1,4 +1,4 @@
-# Lab 08 - Adding an additional Anycast 
+# Lab 08 - Adding an additional Anycast
 
 ## Goal
 
@@ -25,7 +25,6 @@ Edit ```ipv6.tf``` and create a new variable called ```anycast_addr_2``` that us
   anycast_addr_2      = "${cidrhost(local.anycast_network,2)}"
 ```
 
-
 ## Configure the new Anycast on the hosts
 
 We'll need a new template that will apply the new address to the host. This new file would be "templates/enable_anycast_2.tpl". You can copy "templates/enable_anycast_1.tpl" as a base and edit.
@@ -36,6 +35,7 @@ vi templates/enable_anycast_2.tpl
 ```
 
 It should look like:
+
 ```
 auto lo:1
 iface lo:1 inet6 static
@@ -57,6 +57,7 @@ vi enable_anycast_2.tf
 ```
 
 It should look like:
+
 ```
 data "template_file" "enable_anycast_2" {
     template = "${file("templates/enable_anycast_2.tpl")}"
@@ -108,6 +109,7 @@ terraform apply --auto-approve
 ## Verify the new Anycast address
 
 The new Anycast address should respond to curl requests.
+
 ```
 curl http://[Anycast IPv6 Address 2]/
 ```
@@ -115,6 +117,7 @@ curl http://[Anycast IPv6 Address 2]/
 ## Verify the IPv6 Networking
 
 Log into the deployed host and examine the networking.
+
 ```
 terraform output
 ssh root@<Server IP 4> -i mykey

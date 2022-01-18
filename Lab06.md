@@ -26,15 +26,18 @@ vi vars.tf
 ```
 
 The sample below already has the count decreased to 1.
+
 ```
 # number of hosts to deploy
 variable "instance_count" {
     default = "1"
 }
 ```
+
 ## Examine Terraform Plan
 
 Before applying this change to the network, let's examine what Terraform is planning to do. Most notably, we see that the physical hosts are going to be released/destroyed.
+
 ```
 terraform plan | more
 ```
@@ -59,6 +62,7 @@ curl http://<Server IP v4 #1>
 ```
 
 Now test the anycast address to make sure that just the single host is returned.
+
 ```
 curl http://[Anycast IPv6 Address]
 ```

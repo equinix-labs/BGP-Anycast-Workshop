@@ -12,20 +12,21 @@ Understand the network and BGP routing configuration.
 
 From the lab master, log into the deployed host instances using the installed SSH key. As part of the lab deployment, al the deployed hosts were embedded with an SSH key (my_key). The full SSH command is listed as "SSH Access Server 0" when `terraform output` is run.
 
-
 ```
 terraform output
 ssh root@<Server IP v4> -i my_key
 ```
+
 ## Examine the v6 Addressing
 
-On the deployed host, display and examine the IPv6 addresses assigned to the host. 
+On the deployed host, display and examine the IPv6 addresses assigned to the host.
 
 ```
 ip -6 a show
 ```
 
 Sample output (your IPv6 addresses will differ):
+
 ```
 root@bgp01-ewr1-00:~# ip -6 a show
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1000
@@ -54,23 +55,26 @@ These network settings are defined in the network interfaces file. We'll take a 
 more /etc/network/interfaces
 ```
 
-
 ## Examine BGP Data
 
 Next we're going to examine the running BGP routing details using BIRD, an open source, software router.
 
 Let's see what routing protocols are running. (Make sure to add the 6 to run the IPv6 version of birdc.)
+
 ```
 birdc6 show protocols
 ```
+
 You'll see that BGP is running.
 
 Now examine the full BGP routing details.
+
 ```
 birdc6 show protocols all bgp1
 ```
 
 Sample output:
+
 ```
 root@bgp03-ewr1-00:~# birdc6 show protocols all bgp1
 BIRD 1.6.3 ready.
@@ -99,6 +103,7 @@ bgp1     BGP      master   up     17:49:21    Established
 ## Examine BIRD Configuration file
 
 The BIRD software processes using a configuration file that details what routing protocols to run (BGP in our case)
+
 ```
 more /etc/bird/bird6.conf
 ```

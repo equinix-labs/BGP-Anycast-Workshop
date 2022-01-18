@@ -21,4 +21,3 @@ Please mark your master lab account on the etherpad as complete so it can be dea
 Do you have questions or feedback about the lab? Please leave them as an "Issue" on GitHub:
 
 [Workshop GitHub](https://github.com/equinix-labs/BGP-Anycast-Workshop)
-

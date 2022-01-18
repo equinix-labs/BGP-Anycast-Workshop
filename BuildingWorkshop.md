@@ -9,13 +9,15 @@ If you're looking to run this at a public event (conference, meetup, etc), drop 
 ## Setup the environment
 
 Clone this repo someplace where Terraform is available. To install Terraform, please see [Terraform Download](https://www.terraform.io/downloads.html)
+
 ```
 git clone https://github.com/equinix-labs/BGP-Anycast-Workshop
 ```
 
 ## Define the Lab Settings
 
-The default values are appropriate for most installations. 
+The default values are appropriate for most installations.
+
 ```
 cd BGP-Anycast-Workshop/
 cd Labmaster/
@@ -31,7 +33,7 @@ echo metal_auth_token=\"ABCDEFGHIJKLMNOPQRSTUVWXYZ123456\" >> terraform.tfvars
 echo metal_project_id=\"12345678-90AB-CDEF-GHIJ-KLMNOPQRSTUV\" >> terraform.tfvars
 ```
 
-By default, 3 labs will be spun up (with 2 hosts per lab). This can be changed with the variable number_labs. 
+By default, 3 labs will be spun up (with 2 hosts per lab). This can be changed with the variable number_labs.
 
 ## Deploy the Lab Master
 

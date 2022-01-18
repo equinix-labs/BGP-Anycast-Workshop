@@ -14,16 +14,20 @@ Each of the deployed hosts is running a web server that simply returns back the 
 Each host running a web server that returns back it's hostname. Let's verify that each host web server is running correctly and that the correct hostname is being returned.
 
 ### Get the list of hosts again
+
 ```
 terraform output
 ```
-### Verify IPv4 
+
+### Verify IPv4
+
 ```
 curl http://<Server IP v4 #1> 
 curl http://<Server IP v4 #2>
 ```
 
 Our sample output below shows the output from the web server as "bgp03-ewr1-00". The hostname consists of the lab number (bgp03), data center (ewr01), and host instance (00). Each lab initially has two host instances (00 and 01).
+
 ```
 bgp03@stl:~/WorkspaceTemplate$ curl http://147.75.98.155/
 bgp03-ewr1-00

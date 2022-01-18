@@ -1,4 +1,4 @@
-# Lab 07 - Adding an additional Anycast 
+# Lab 07 - Adding an additional Anycast
 
 ## Goal
 
@@ -20,11 +20,13 @@ ssh <your_lab_username>@<lab_master_server>
 ## Define the second Anycast address
 
 The first (:1) IPv6 in the subnet is already in use so we'll create a second IPv6 address and use :2
+
 ```
 vi ipv6.tf
 ```
 
 Call the new address "anycast_addr_2" and assign it the second address in the subnet.
+
 ```
 locals {
   # 8 bits is 2^8 or 256 labs
@@ -44,7 +46,7 @@ output "Anycast IPv6 Address 2" {
 }
 ```
 
-## Execute the Terraform Plan 
+## Execute the Terraform Plan
 
 Executing the Terraform plan will output the new Anycast address.
 
@@ -53,6 +55,7 @@ terraform plan
 ```
 
 You should see the new address outputted similar to:
+
 ```
 Anycast IPv6 Address 2 = 2604:1380:2:2303::2
 ```
