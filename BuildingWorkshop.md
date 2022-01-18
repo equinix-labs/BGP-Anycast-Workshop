@@ -4,13 +4,13 @@ These instructions walk through setting up an environment to support multiple st
 
 If you're looking to run this workshop just for yourself, feel free to set the number_labs (See below) to 1. This will spin up just a single student environment.
 
-If you're looking to run this at a public event (conference, meetup, etc), drop Packet a note and they might hook you up with credits to run the lab.
+If you're looking to run this at a public event (conference, meetup, etc), drop Equinix Metal a note and they might hook you up with credits to run the lab.
 
 ## Setup the environment
 
 Clone this repo someplace where Terraform is available. To install Terraform, please see [Terraform Download](https://www.terraform.io/downloads.html)
 ```
-git clone https://github.com/packet-labs/BGP-Anycast-Workshop
+git clone https://github.com/equinix-labs/BGP-Anycast-Workshop
 ```
 
 ## Define the Lab Settings
@@ -22,13 +22,13 @@ cd Labmaster/
 cp terraform.tfvars.sample terraform.tfvars
 ```
 
-## Setup your Packet Credentials
+## Setup your Equinix Metal Credentials
 
-Replace with your Packet project ID and user API key (don't use a Project API key). Make sure the values are contained in paramethesis.
+Replace with your Equinix Metal project ID and user API key (don't use a Project API key). Make sure the values are contained in paramethesis.
 
 ```
-echo packet_auth_token=\"ABCDEFGHIJKLMNOPQRSTUVWXYZ123456\" >> terraform.tfvars
-echo packet_project_id=\"12345678-90AB-CDEF-GHIJ-KLMNOPQRSTUV\" >> terraform.tfvars
+echo metal_auth_token=\"ABCDEFGHIJKLMNOPQRSTUVWXYZ123456\" >> terraform.tfvars
+echo metal_project_id=\"12345678-90AB-CDEF-GHIJ-KLMNOPQRSTUV\" >> terraform.tfvars
 ```
 
 By default, 3 labs will be spun up (with 2 hosts per lab). This can be changed with the variable number_labs. 
@@ -51,4 +51,4 @@ Students can log into the Lab Master via SSH and the password login. Each studen
 
 ## Clean up
 
-Make sure that students tear down their labs via "terraform destroy" or destroy then via the Packet GUI. Running "terraform destroy" in the LabMaster only destroys the Lab Master host and not the student hosts.
+Make sure that students tear down their labs via "terraform destroy" or destroy then via the Equinix Metal GUI. Running "terraform destroy" in the LabMaster only destroys the Lab Master host and not the student hosts.

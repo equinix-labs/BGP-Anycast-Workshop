@@ -78,7 +78,7 @@ name     proto    table    state  since       info
 bgp1     BGP      master   up     17:49:21    Established
   Preference:     100
   Input filter:   ACCEPT
-  Output filter:  packet_bgp
+  Output filter:  metal_bgp
   Routes:         0 imported, 1 exported, 0 preferred
   Route change stats:     received   rejected   filtered    ignored   accepted
     Import updates:              0          0          0          0          0
@@ -103,7 +103,7 @@ The BIRD software processes using a configuration file that details what routing
 more /etc/bird/bird6.conf
 ```
 
-Take note of the "filter packet_bgp" and the network that is being communicated via BGP to the neighbor router. As you can see, this is the /64 that has been assigned to this lab.
+Take note of the "filter metal_bgp" and the network that is being communicated via BGP to the neighbor router. As you can see, this is the /64 that has been assigned to this lab.
 
 ## Next Steps
 

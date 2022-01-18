@@ -28,7 +28,7 @@ Call the new address "anycast_addr_2" and assign it the second address in the su
 ```
 locals {
   # 8 bits is 2^8 or 256 labs
-  anycast_network   = "${cidrsubnet(data.packet_precreated_ip_block.ipv6.cidr_notation,8,var.lab_number)}"
+  anycast_network   = "${cidrsubnet(data.metal_precreated_ip_block.ipv6.cidr_notation,8,var.lab_number)}"
   anycast_addr      = "${cidrhost(local.anycast_network,1)}"
   anycast_addr_2    = "${cidrhost(local.anycast_network,2)}"
 }

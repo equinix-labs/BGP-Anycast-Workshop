@@ -3,7 +3,7 @@
 # account running this script should have sudo group 
 # 
 if [ "$#" -ne 5 ] ; then
-  echo "Usage: $0 BGP-Password Packet-Auth-Token Packet-Project-ID Number-Workspaces-To-Create Facility" >&2
+  echo "Usage: $0 BGP-Password Metal-Auth-Token Metal-Project-ID Number-Workspaces-To-Create Facility" >&2
   exit 1
 fi
 
@@ -23,7 +23,7 @@ echo NUMBER_WORKSPACES=$NUMBER_WORKSPACES
 echo FACILITY=$FACILITY
 
 rm -rf BGP-Anycast-Workshop/
-git clone https://github.com/packet-labs/BGP-Anycast-Workshop
+git clone https://github.com/equinix-labs/BGP-Anycast-Workshop
 cd BGP-Anycast-Workshop/
 
 # Terraform needs access to these to install plugins
@@ -45,8 +45,8 @@ do
 
   echo ""                                       >  WorkspaceTemplate/terraform.tfvars
   echo bgp_md5 = \"$BGP_PASSWORD\"              >> WorkspaceTemplate/terraform.tfvars
-  echo packet_auth_token=\"$PACKET_AUTH_TOKEN\" >> WorkspaceTemplate/terraform.tfvars
-  echo packet_project_id=\"$PACKET_PROJECT_ID\" >> WorkspaceTemplate/terraform.tfvars
+  echo metal_auth_token=\"$PACKET_AUTH_TOKEN\" >> WorkspaceTemplate/terraform.tfvars
+  echo metal_project_id=\"$PACKET_PROJECT_ID\" >> WorkspaceTemplate/terraform.tfvars
   echo lab_number=\"$i\"                        >> WorkspaceTemplate/terraform.tfvars
   echo lab_name=\"$USER\"                       >> WorkspaceTemplate/terraform.tfvars
   echo facility=\"$FACILITY\"            >> WorkspaceTemplate/terraform.tfvars

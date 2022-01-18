@@ -38,9 +38,9 @@ more ipv6.tf
 The ```cidrsubnet``` Terraform command is the 
 
 ```
-anycast_network   = "${cidrsubnet(data.packet_precreated_ip_block.ipv6.cidr_notation,8,var.lab_number)}"
+anycast_network   = "${cidrsubnet(data.metal_precreated_ip_block.ipv6.cidr_notation,8,var.lab_number)}"
 ```
-The "packet_precreated_ip_block" is the IPv6 block that has been assigned to this project. The ```cidrsubnet``` Terraform command then takes the large IPv6 block and splits it out into 2^8 subnets (the 8 represents the number of additional subnet bits).
+The "metal_precreated_ip_block" is the IPv6 block that has been assigned to this project. The ```cidrsubnet``` Terraform command then takes the large IPv6 block and splits it out into 2^8 subnets (the 8 represents the number of additional subnet bits).
 
 This results in 256 subnets available across all the labs. Using the lab number, one of the individual subnets it then assigned to the lab.
 

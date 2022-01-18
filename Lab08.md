@@ -77,7 +77,7 @@ resource "null_resource" "enable_anycast_2" {
 
     connection {
         type = "ssh"
-        host = "${element(packet_device.hosts.*.access_public_ipv4,count.index)}"
+        host = "${element(metal_device.hosts.*.access_public_ipv4,count.index)}"
         private_key = "${file("mykey")}"
         agent = false
     }

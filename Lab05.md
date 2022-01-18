@@ -40,7 +40,7 @@ terraform plan | more
 ```
 
 In brief, Terraform will be:
-  * packet_device.hosts[2] - deploying the bare metal host [2]
+  * metal_device.hosts[2] - deploying the bare metal host [2]
   * apache[2] - configuring apache on host [2]
   * bird[2] - installing BIRD on host [2]
   * configure_bird[2] - configuring BIRD on host [2]
