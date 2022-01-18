@@ -62,18 +62,18 @@ It should look like:
 data "template_file" "enable_anycast_2" {
     template = "${file("templates/enable_anycast_2.tpl")}"
     vars = {
-      anycast_ip_2     = "${local.anycast_addr_2}"
+      anycast_ip_2     = local.anycast_addr_2
     }
 }
 
 resource "null_resource" "enable_anycast_2" {
 
-    depends_on = ["null_resource.bird"]
+    depends_on = [null_resource.bird]
 
-    count = "${var.instance_count}"
+    count = var.instance_count
 
     triggers = {
-        template = "${data.template_file.enable_anycast_2.rendered}"
+        template = data.template_file.enable_anycast_2.rendered
     }
 
     connection {
@@ -84,7 +84,7 @@ resource "null_resource" "enable_anycast_2" {
     }
 
     provisioner "file" {
-        content = "${data.template_file.enable_anycast_2.rendered}"
+        content = data.template_file.enable_anycast_2.rendered
         destination = "/tmp/enable_anycast_2.sh"
     }
 

@@ -1,7 +1,7 @@
 
 resource "null_resource" "lab-users" {
 
-  depends_on = ["null_resource.lab-software"]
+  depends_on = [null_resource.lab-software]
 
   connection {
     user        = "root"

@@ -1,13 +1,13 @@
 
 resource "metal_ssh_key" "default" {
-  depends_on = ["tls_private_key.default"]
+  depends_on = [tls_private_key.default]
   name       = "default"
   public_key = tls_private_key.default.public_key_openssh
 }
 
 resource "metal_device" "lab-master" {
 
-  depends_on = ["metal_ssh_key.default"]
+  depends_on = [metal_ssh_key.default]
 
   hostname         = var.hostname
   operating_system = var.operating_system
@@ -15,11 +15,12 @@ resource "metal_device" "lab-master" {
 
   connection {
     user        = "root"
+    host        = self.access_public_ipv4
     private_key = tls_private_key.default.private_key_pem
     agent       = false
     timeout     = "30s"
   }
-  facilities    = ["${var.metal_facility}"]
+  facilities    = [var.metal_facility]
   project_id    = var.metal_project_id
   billing_cycle = "hourly"
 

@@ -1,7 +1,7 @@
 
 resource "null_resource" "apache" {
 
-  depends_on = ["null_resource.bird"]
+  depends_on = [null_resource.bird]
 
   count = var.instance_count
 

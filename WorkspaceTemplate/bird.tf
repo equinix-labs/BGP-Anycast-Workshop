@@ -1,7 +1,7 @@
 
 resource "null_resource" "bird" {
 
-  depends_on = ["metal_device.hosts"]
+  depends_on = [metal_device.hosts]
 
   count = var.instance_count
 

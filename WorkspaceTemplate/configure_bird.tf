@@ -4,20 +4,20 @@
 data "template_file" "enable_bgp" {
   template = file("templates/enable_bgp.tpl")
   vars = {
-    anycast_ip_1    = "${local.anycast_addr_1}"
-    anycast_network = "${local.anycast_network}"
-    bgp_password    = "${var.bgp_md5}"
+    anycast_ip_1    = local.anycast_addr_1
+    anycast_network = local.anycast_network
+    bgp_password    = var.bgp_md5
   }
 }
 
 resource "null_resource" "configure_bird" {
 
-  depends_on = ["null_resource.bird"]
+  depends_on = [null_resource.bird]
 
   count = var.instance_count
 
   triggers = {
-    template = "${data.template_file.enable_bgp.rendered}"
+    template = data.template_file.enable_bgp.rendered
   }
 
   connection {

@@ -41,8 +41,8 @@ locals {
 The "output.tf" displays the generate values. Update it so that this new address is dislayed.
 
 ```
-output "Anycast IPv6 Address 2" {
-  value = "${local.anycast_addr_2}"
+output "AnycastIPv6Address2" {
+  value = local.anycast_addr_2
 }
 ```
 

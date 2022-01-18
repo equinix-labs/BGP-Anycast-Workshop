@@ -2,18 +2,18 @@
 data "template_file" "enable_anycast_1" {
   template = file("templates/enable_anycast_1.tpl")
   vars = {
-    anycast_ip_1 = "${local.anycast_addr_1}"
+    anycast_ip_1 = local.anycast_addr_1
   }
 }
 
 resource "null_resource" "enable_anycast_1" {
 
-  depends_on = ["null_resource.bird"]
+  depends_on = [null_resource.bird]
 
   count = var.instance_count
 
   triggers = {
-    template = "${data.template_file.enable_anycast_1.rendered}"
+    template = data.template_file.enable_anycast_1.rendered
   }
 
   connection {
