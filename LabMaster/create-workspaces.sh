@@ -11,14 +11,14 @@ fi
 LAB_NAME="bgp"
 
 BGP_PASSWORD="$1"
-PACKET_AUTH_TOKEN="$2"
-PACKET_PROJECT_ID="$3"
+METAL_AUTH_TOKEN="$2"
+METAL_PROJECT_ID="$3"
 NUMBER_WORKSPACES="$4"
 FACILITY="$5"
 
 echo BGP_PASSWORD=$BGP_PASSWORD
-echo PACKET_AUTH_TOKEN=$PACKET_AUTH_TOKEN
-echo PACKET_PROJECT_ID=$PACKET_PROJECT_ID
+echo METAL_AUTH_TOKEN=$METAL_AUTH_TOKEN
+echo METAL_PROJECT_ID=$METAL_PROJECT_ID
 echo NUMBER_WORKSPACES=$NUMBER_WORKSPACES
 echo FACILITY=$FACILITY
 
@@ -45,8 +45,8 @@ do
 
   echo ""                                       >  WorkspaceTemplate/terraform.tfvars
   echo bgp_md5 = \"$BGP_PASSWORD\"              >> WorkspaceTemplate/terraform.tfvars
-  echo metal_auth_token=\"$PACKET_AUTH_TOKEN\" >> WorkspaceTemplate/terraform.tfvars
-  echo metal_project_id=\"$PACKET_PROJECT_ID\" >> WorkspaceTemplate/terraform.tfvars
+  echo metal_auth_token=\"$METAL_AUTH_TOKEN\" >> WorkspaceTemplate/terraform.tfvars
+  echo metal_project_id=\"$METAL_PROJECT_ID\" >> WorkspaceTemplate/terraform.tfvars
   echo lab_number=\"$i\"                        >> WorkspaceTemplate/terraform.tfvars
   echo lab_name=\"$USER\"                       >> WorkspaceTemplate/terraform.tfvars
   echo facility=\"$FACILITY\"            >> WorkspaceTemplate/terraform.tfvars

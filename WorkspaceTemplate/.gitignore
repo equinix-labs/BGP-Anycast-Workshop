@@ -1,0 +1,7 @@
+terraform.tfvars
+.terraform.tfstate.lock.info
+.terraform/
+openstack_user_config.yml
+terraform.tfstate
+terraform.tfstate.backup
+default.pem
